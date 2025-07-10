@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+			<meta charset="utf-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1">
+			<title>Cyber Warriors Form</title>
+
+			<link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+
+<body>
+	<div class="container">
+		<form autocomplete="off" method="post" name="google-sheet">
+			<h3><center>Contact Form</center></h3>
+					<input type="text" placeholder="Type Your Name Here" name="name">
+					<input type="email" placeholder="Type Your Email Here" name="email">
+					<input type="text" placeholder="Type Your Number Here" name="mobile">
+
+			<select name="degree">
+					<option value="Not Selected">Select an option</option>
+					<option value="BCA">BCA</option>
+					<option value="BSC IT">BSC IT</option>
+					<option value="BTech CS">BTech CS</option>
+					<option value="BSE CS">BSE CS</option>
+			</select>
+
+			<textarea rows="4" placeholder="How we can help?" name="message"></textarea>
+
+			<label><b>Gender</b></label><br>
+
+			Male <input type="radio" name="gender" value="Male">
+			Female <input type="radio" name="gender" value="Female">
+
+			<button type="submit" name="submit">Send</button>
+			<button type="reset" class="reset">Reset</button>
+
+		</form>
+
+	</div>
+			<script>
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbxYTow-smuYjl93oMAHaGgChs-tKp0k3mLeit5vNmed3PeGPbHcKnbom9wWjGlgVwT3/exec'
+            const form = document.forms['google-sheet']
+          
+            form.addEventListener('submit', e => {
+              e.preventDefault()
+              fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => alert("Thanks for Contacting us..! We Will Contact You Soon..."))
+                .catch(error => console.error('Error!', error.message))
+            })
+       </script>
+
+
+
+</body>
+</html>
